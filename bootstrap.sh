@@ -13,10 +13,6 @@ pip install virtualenv virtualenvwrapper -q
 
 # Vim:
 apt-get install -yq vim-nox
-# Copy my config files (TODO: Replace with github repository):
-cp /vagrant/.vimrc ~vagrant/
-cp -r /vagrant/.vim ~vagrant/
-chown vagrant: ~vagrant/.zshrc ~vagrant/.vimrc ~vagrant/.vim
 
 
 # Git VCS:
@@ -29,11 +25,26 @@ apt-get install -yq git
 # ZSH:
 apt-get install -yq zsh
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~vagrant/.oh-my-zsh
-# Copy my config files (TODO: Replace with github repository):
-cp /vagrant/.zshrc ~vagrant/
-chown vagrant: ~vagrant/.zshrc
 # Set zsh as default shell for user:
 chsh -s /bin/zsh vagrant
 
-# TODO install dotfiles from git repository
+
+# Install dotfiles from git repository:
 # Howto: http://blog.sanctum.geek.nz/managing-dot-files-with-git/
+# Clone dotfiles
+git clone git://github.com/chrischmo/dotfiles.git ~vagrant/.dotfiles
+# chown vagrant: ~vagrant/.dotfiles/*
+# Clean up possibly existing dotfiles
+rm -r .vim .vimrc .gitconfig .zshrc
+# Create links in homefolder
+ln -s ~vagrant/.dotfiles/vim ~vagrant/.vim
+ln -s ~vagrant/.dotfiles/vimrc ~vagrant/.vimrc
+ln -s ~vagrant/.dotfiles/gitconfig ~vagrant/.gitconfig
+ln -s ~vagrant/.dotfiles/zshrc ~vagrant/.zshrc
+chown vagrant: ~vagrant/.zshrc ~vagrant/.vimrc ~vagrant/.vim ~vagrant/.gitconfig
+
+# Copy ssh keys from /vagrant
+cp /vagrant/.ssh_keys/* ~vagrant/.ssh
+# chown vagrant: ~vagrant/.ssh/*
+# Workaround for "Could not open a connection to your authentication agent."
+eval $(ssh-agent)
