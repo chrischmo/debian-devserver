@@ -48,7 +48,14 @@ cp /vagrant/.ssh_keys/id_rsa* ~vagrant/.ssh
 chown vagrant: .ssh/id_rsa*
 chmod 600 ~vagrant/.ssh/id_rsa
 chmod 644 ~vagrant/.ssh/id_rsa.pub
-# TODO Manually add key to ssh-agent (doesn't work automatically bc passphrase)
-# Workaround for "Could not open a connection to your authentication agent."
-# eval $(ssh-agent)
-# ssh-add ~vagrant/.ssh/id_rsa
+
+# Final Messages:
+echo -e \
+	"======================= TODO POST-INSTALL: ========================="
+echo -e "Manually add the SSH key to ssh-agent (can't be done automatically \n\
+because passphrase has to be entered). Execute the following command \n\
+first to prevent the 'Could not open a connection to your \n\
+authentication agent.' error:"
+echo -e "    eval <DOLLAR>(ssh-agent) \n\
+    ssh-add ~vagrant/.ssh/id_rsa"
+echo -e "===================================================================="
