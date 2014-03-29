@@ -33,7 +33,7 @@ chsh -s /bin/zsh vagrant
 # Howto: http://blog.sanctum.geek.nz/managing-dot-files-with-git/
 # Clone dotfiles
 git clone git://github.com/chrischmo/dotfiles.git ~vagrant/.dotfiles
-# chown vagrant: ~vagrant/.dotfiles/*
+chown vagrant: ~vagrant/.dotfiles/ida*
 # Clean up possibly existing dotfiles
 rm -r .vim .vimrc .gitconfig .zshrc
 # Create links in homefolder
@@ -43,8 +43,8 @@ ln -s ~vagrant/.dotfiles/gitconfig ~vagrant/.gitconfig
 ln -s ~vagrant/.dotfiles/zshrc ~vagrant/.zshrc
 chown vagrant: ~vagrant/.zshrc ~vagrant/.vimrc ~vagrant/.vim ~vagrant/.gitconfig
 
-# Copy ssh keys from /vagrant
-cp /vagrant/.ssh_keys/* ~vagrant/.ssh
-# chown vagrant: ~vagrant/.ssh/*
+# Copy SSH keys from /vagrant
+cp /vagrant/.ssh_keys/id_rsa* ~vagrant/.ssh
+chown vagrant: ~vagrant/.ssh/id_rsa*
 # Workaround for "Could not open a connection to your authentication agent."
 eval $(ssh-agent)
