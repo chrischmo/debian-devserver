@@ -3,7 +3,7 @@
 apt-get update
 
 # Various Tools:
-apt-get install -yq tree curl htop zip unzip 
+apt-get install -yq tree curl htop zip unzip tmux
 
 
 # Python:
@@ -55,7 +55,7 @@ chmod 644 ~vagrant/.ssh/id_rsa.pub
 
 # Final Messages:
 echo -e \
-	"======================= TODO POST-INSTALL: =========================\n"
+	"\n======================= TODO POST-INSTALL: =========================\n"
 echo -e "Manually add the SSH key to ssh-agent (can't be done automatically \n\
 because passphrase has to be entered). Execute the following command \n\
 first to prevent the 'Could not open a connection to your \n\
@@ -63,10 +63,12 @@ authentication agent.' error:"
 echo -e "    eval <DOLLAR>(ssh-agent) \n\
     ssh-add ~vagrant/.ssh/id_rsa\n"
 
-echo -e "--------------------------------------------------------------------"
+echo -e "--------------------------------------------------------------------\n"
 
-echo -e "Option: Update the vim plugins by cd-ing into .dotfiles and running:"
-echo -e "    git submodule update \n\
+echo -e "OPTIONAL: Update the vim plugins by cd-ing into .dotfiles and running:"
+echo -e "    git submodule init \n\
+    git submodule update \n\
     git submodule foreach git submodule init \n\
-    git submodule foreach git submodule update\n"
+    git submodule foreach git submodule update \n\
+    git submodule foreach git pull origin master"
 echo -e "===================================================================="
