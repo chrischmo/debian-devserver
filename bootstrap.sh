@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-apt-get update
+apt-get update --fix-missing
 
 # Various Tools:
 apt-get install -yq tree curl htop zip unzip tmux dtrx
