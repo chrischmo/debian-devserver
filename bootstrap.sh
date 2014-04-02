@@ -3,7 +3,7 @@
 apt-get update
 
 # Various Tools:
-apt-get install -yq tree curl htop zip unzip tmux
+apt-get install -yq tree curl htop zip unzip tmux dtrx
 
 
 # Python:
@@ -55,7 +55,7 @@ chmod 644 ~vagrant/.ssh/id_rsa.pub
 
 # Final Messages:
 echo -e \
-	"\n======================= TODO POST-INSTALL: =========================\n"
+	"\n======================= To-Do POST-INSTALL: =========================\n"
 echo -e "Manually add the SSH key to ssh-agent (can't be done automatically \n\
 because passphrase has to be entered). Execute the following command \n\
 first to prevent the 'Could not open a connection to your \n\
