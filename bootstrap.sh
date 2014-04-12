@@ -60,6 +60,9 @@ chown vagrant: .ssh/id_rsa*
 chmod 600 ~vagrant/.ssh/id_rsa
 chmod 644 ~vagrant/.ssh/id_rsa.pub
 
+# Install dependencies for Plone
+apt-get install libxml2-dev libxslt-dev
+
 # Final Messages:
 echo -e "\n======================= To-Do POST-INSTALL: =========================\n"
 echo -e "Manually add the SSH key to ssh-agent (can't be done automatically \n\
